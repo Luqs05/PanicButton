@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	session_start();
-	$host        = "host=41.185.93.71";
+	$host        = "host=127.0.0.1";
 	$port        = "port=5432";
 	$dbname      = "dbname=devgroup3";
-	$credentials = "user=postgres password=Raeesah1";
+	$credentials = "user=postgres password=password";
 	$db = pg_connect("$host $port $dbname $credentials");
 
 	$varlat = pg_escape_string($_POST['lat']);
