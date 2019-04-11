@@ -1,0 +1,66 @@
+body{
+	padding: 0;
+	margin: 0;
+	min-width:430px;
+}
+html, body, #mapid{
+	height: 100%;
+	width: 100%;
+}
+
+table, th {    
+	    border: 1px solid #ddd;
+	    text-align: left;
+	}
+
+th {
+	padding: 6px;
+}
+
+td{
+	background: #b1b4bc;
+}
+
+tr{
+	background: #f2f2f2;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#mapid {
+	left: 0.1%;
+	width: 50%;
+	height: 92.5%;
+}
+
+#mapidEdit {
+	left: 0.1%;
+	width: 99.5%;
+	height: 92.5%;
+}
+
+.buttons{
+	position: absolute;
+	bottom: 10%;
+	height: 100%;
+	width: 50%;
+	line-height: 300%;
+	font-family: Trebuchet MS;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+	z-index: 1002;	
+}
+
+.buttons:active{
+	background-color:black;
+}
+
+
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url(layers-2x.png);
+	background-size: 26px 26px;
+	}

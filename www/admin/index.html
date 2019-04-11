@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Dashboard</title>
+	<script> if (location.protocol == 'https:')
+	  location.href = location.href.replace(/^https:/, 'http:');
+	</script>
+
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="favicon.ico">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+	 <link rel="stylesheet" href="leaflet/leaflet.css"
+	   integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+	   crossorigin=""/>
+
+	<link  rel="stylesheet" type="text/css" href="css/topnav.css">
+	<link  rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript" language="javascript">
+        jQuery(window).on("load", function () {
+            $("#waitpage").slideUp(1000, function() {
+                $(this).remove();
+            });
+        });
+    </script>
+		
+</head>
+
+<script type="text/javascript">
+
+	ws = new WebSocket("ws://41.185.93.71:7000/data");
+	    ws.binaryType = "arraybuffer";
+
+</script>
+
+<body onload="onLoadd(); pi();">
+
+<div id="waitpage" style="z-index: 9999; position:absolute; height:100%; width:100%; background-color: #fff"> 
+    <img style=" position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;" src="css/images/loader4.gif"/><img>
+</div>
+
+<div id='cssmenu'>
+<ul>
+   <li><a href='index.html'><span>Live Feed</span></a></li>
+   <li><a href='edit.html'><span>Edit</span></a></li>
+   <li><a href='about/index.html'><span>About</span></a></li>
+   <li class='last'><a href='contact/index.html'><span>Contact</span></a></li>
+</ul>
+
+<img src="images/logo.png" alt="Logo" align="right" style="height:100%; position: relative; right: 0.2%">
+</div>
+
+<div id="mapid" class="w3-display-bottomright">
+
+
+
+</div>
+<script src="leaflet/leaflet.js">	</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+<script src="js/notify.min.js"></script>
+
+<script src="js/JS.js" type="text/javascript"></script>
+
+
+<button class="w3-btn w3-round-large" id ="lblCntForMnt">
+	<span class="w3-badge w3-xxlarge w3-padding" style="background: #FF0000" id = "CntUnattended"></span> Unattended
+</button>
+
+<button class="w3-btn w3-round-large" id ="lblCntProgress">
+	<span class="w3-badge w3-xxlarge w3-padding" style="background: #FFA500" id = "CntProgress"></span> In Progress
+</button>
+
+<button class="w3-btn w3-round-large " id ="lblCntAttended">
+	<span class="w3-badge w3-xxlarge w3-padding" style="background: #00AF00" id = "CntAttended"></span> Attended
+</button>
+
+<button class="w3-btn w3-round-large" id ="lblTotCnt">
+	<span class="w3-badge w3-xxlarge w3-padding" style="background: #252582" id = "CntAll"></span> All Cases
+</button>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.js"></script>
+<script src="js/d3pie.min.js"></script>
+
+<div class="w3-round-large" id="pieChart" style = "position: absolute; right: 0%;"></div>
+
+<script src="js/pi.js" type="text/javascript"></script>
+
+<button class="w3-btn w3-round-large" id ="btnEnvir">Environment</button>
+<button class="w3-btn w3-round-large" id ="btnMed">Medical</button>
+<button class="w3-btn w3-round-large" id ="btnCrime">Criminal</button>
+<button class="w3-btn w3-round-large" id ="btnNan">No Type</button>
+
+
+<div id="tableDiv">
+<table id="example" class="display compact" cellspacing="0" height="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Latitude</th>
+                <th>Longtiude</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<script type="text/javascript">
+     window.onbeforeunload = function(event) {
+                  ws.close();
+               };
+</script>
+
+</body>
+</html>
