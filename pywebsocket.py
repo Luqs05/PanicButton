@@ -6,7 +6,7 @@ from eventlet import websocket
 from eventlet.hubs import trampoline
 
 #Change these according to your database
-dsn = 'dbname=devgroup3 user=postgres password=Raeesah1'  
+dsn = 'dbname=devgroup3 user=postgres password=password'  
 
 def dblisten(q):
     #Open a connection, add notifications to *q*.
@@ -40,5 +40,5 @@ def dispatch(environ, start_response):
 
 #Change the URL to that of your own server or name it 127.0.0.1, leave the port as 7000.
 if __name__ == "__main__":
-    listener = eventlet.listen(('41.185.93.71', 7000))
+    listener = eventlet.listen(('127.0.0.1', 7000))
     wsgi.server(listener, dispatch)
